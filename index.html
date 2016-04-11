@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Card</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script> 
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$('form').submit(function(){
+    			var firstName =$("input[name='First Name'").val();
+				var lastName =$("input[name='Last Name'").val();
+				var description =$("textarea").val();
+				$('.contact_side').append("<div class='contact_card'><h1>"+firstName + ' ' + lastName + "</h1><p class='norm'>Click Here for a description... </p><p class='description hidden'>" + description + "</p></div>");
+				$('.contact_side').append("")
+				return false;
+    		});
+    		$('.contact_side').on('click', '.contact_card',function(){
+    			// var infoToggle =$("textarea").val();
+    			$(this).find('p.description').toggleClass('hidden');
+    			$(this).find('h1,p.norm').toggleClass('hidden');
+    			// $(this).attr('altHTML', origContent)
+    		});
+    		
+    	});
+    </script>
+</head>
+<body>
+	<div class="container">
+		<div class="form_side">
+			<form>
+				<input name="First Name" type="text" placeholder="First Name">
+				<input name = "Last Name" type="text" placeholder="Last Name">
+				<textarea id="description" rows="5" cols="20" placeholder="Description"></textarea>
+				<input type="submit" value="Add User">
+			</form>
+		</div>
+		<div class="contact_side">
+			
+		</div>
+	</div>
+</body>
+</html>
